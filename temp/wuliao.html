@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>云播</title>
+</head>
+<body>
+<label>请输入磁力链接
+	<input type="text" name="">
+</label>
+<button>确定</button>
+<select>
+</select>
+<script type="text/javascript">
+	var inputDom = document.getElementsByTagName('input')[0];
+	var buttonDom = document.getElementsByTagName('button')[0];
+	var yunboURL = [
+			'http://apiv.ga/magnet/{{magnet}}',
+			'http://apiv.ga/kankan/{{magnet}}',
+			'http://apiv.ga/{{magnet}}',
+			//'https://www.k8dy.top/playm3u8/?url=magnet:?xt=urn:btih:{{magnet}}',
+			'https://m.junxi123.com/playm3u8/?url=magnet:?xt=urn:btih:{{magnet}}',
+			'https://player.yunbow.cn/playm3u8/?url=magnet:?xt=urn:btih:{{magnet}}'
+		]
+	var selectDom = document.getElementsByTagName('select')[0];
+	for (var i = 0; i < yunboURL.length; i++) {
+		var opDom = document.createElement('option');
+		opDom.innerHTML = i;
+		selectDom.appendChild(opDom);
+	}
+	buttonDom.onclick = function() {
+		var index = selectDom.value;
+		var finURL = 'data:text/html,<meta http-equiv=\"refresh\" content=\"0.1;url=' + yunboURL[index].replace('{{magnet}}',inputDom.value) + "\">";
+		window.open(finURL);
+	}
+</script>
+</body>
+</html>
